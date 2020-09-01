@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::name('email.')
+    ->namespace('Api\Emails')
+    ->prefix('email')
+    ->group(function () {
+        Route::get('/', 'SendController')->name('create');
+    })
+;
