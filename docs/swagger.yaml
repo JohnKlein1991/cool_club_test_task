@@ -1,0 +1,71 @@
+swagger: "2.0"
+info:
+  description: "Description"
+  version: "1.0.0"
+  title: "Test task API"
+  contact:
+    email: "test@test.com"
+
+host: "localhost"
+basePath: "/api"
+tags:
+  - name: "email"
+    description: "Работа с почтой"
+paths:
+  /email:
+    post:
+      tags:
+        - "email"
+      summary: "Отправить письмо"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "content"
+          description: "Текст письма"
+          required: true
+          schema:
+            $ref: "#/definitions/SendEmail"
+      responses:
+        "200":
+          description: "Success"
+          schema:
+            $ref: "#/definitions/SendEmailSuccess"
+        "422":
+          description: "The given data was invalid."
+          schema:
+            $ref: "#/definitions/SendEmailError"
+definitions:
+  SendEmail:
+    type: "object"
+    required:
+      - "content"
+    properties:
+      content:
+        type: "string"
+        example: "Simple message"
+  SendEmailSuccess:
+    type: "object"
+    properties:
+      success:
+        type: "boolean"
+        example: "true"
+      message:
+        type: "string"
+        example: "Ваше письмо было отправлено"
+  SendEmailError:
+    type: "object"
+    properties:
+      errors:
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            content:
+              type: "string"
+              example: "Слишком мало букв"
+      message:
+        type: "string"
+        example: "The given data was invalid."
