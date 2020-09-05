@@ -17,7 +17,8 @@ class SendController extends Controller
         $logEmailsService->log($message, $request->ip());
 
         return \response([
-            'success' => true
+            'success' => true,
+            'message' => __('email.form_email.success_message')
         ], 200);
     }
 }
