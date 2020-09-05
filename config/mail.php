@@ -106,5 +106,13 @@ return [
             resource_path('views/vendor/mail'),
         ],
     ],
-
+    /*
+    |--------------------------------------------------------------------------
+    | Custom mail settings
+    |--------------------------------------------------------------------------
+    |
+    */
+    'from_form' => [
+        'destination' => env('EMAIL_FROM_FORM_DESTINATION', 'test@test.com'),
+    ]
 ];

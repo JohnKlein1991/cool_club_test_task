@@ -4,6 +4,11 @@ namespace App\Http\Requests\Api\Emails;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class SendRequest
+ * @package App\Http\Requests\Api\Emails
+ * @property string $content
+ */
 class SendRequest extends FormRequest
 {
     /**
@@ -28,6 +33,9 @@ class SendRequest extends FormRequest
         ];
     }
 
+    /**
+     * @return array|string[]
+     */
     public function messages()
     {
         return [

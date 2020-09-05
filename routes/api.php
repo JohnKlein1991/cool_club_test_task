@@ -18,6 +18,6 @@ Route::name('email.')
     ->namespace('Api\Emails')
     ->prefix('email')
     ->group(function () {
-        Route::get('/', 'SendController')->name('create');
+        Route::post('/', 'SendController')->name('create');
     })
 ;
